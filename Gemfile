@@ -16,6 +16,24 @@ gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
+gem 'devise'
+#installing devise gem so that can do user obboarding quickly
+
+gem 'bootstrap-sass'
+
+gem 'bootstrap', '~> 4.1.0'
+
+gem 'jquery-rails'
+
+gem 'jquery-turbolinks'
+
+gem 'cloudinary'
+
+# source for figaro: https://launchschool.com/blog/managing-environment-configuration-variables-in-rails
+gem 'figaro'
+
+gem 'mailgun-ruby', '~>1.0.2', require: 'mailgun'
+
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
