@@ -2,14 +2,20 @@ class LogsController < ApplicationController
 before_action :authenticate_user!, #:except => [ :show]
 
   def index
+    if params[:search]
+      @search_results_logs = Log.search_by_title_and_body(params[:search])
+      respond_to do |format|
+        format.js {render partial: 'search-results'}
+      end
+    else
+      @logs = Log.where(:user_id => current_user.id)
+      @name = current_user.name
 
-    @logs = Log.where(:user_id => current_user.id)
-    @name = current_user.name
-
-    #@logs = current_user.logs
-    respond_to do |format|
+      #@logs = current_user.logs
+      respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @logs }
+      end
     end
   end
 
