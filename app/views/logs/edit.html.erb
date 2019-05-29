@@ -7,7 +7,7 @@
 		<%= form.label :content, "Content - Great! Felt better?" %><br>
 		<%= form.text_area :content, :cols=>40, :rows=>15 %><br>
 		<%= form.label :picture %><br>
-		<%= cl_image_tag(@log.image) %><br>
+		<%= cl_image_tag(@log.image, :width => 350, :fetch_format=>:auto, :crop=>"scale") %><br>
     <%= form.file_field :picture %><br>
   </p>
   <p>
