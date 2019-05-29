@@ -2,7 +2,9 @@ class LogsController < ApplicationController
 before_action :authenticate_user!, #:except => [ :show]
 
   def index
-    @logs = current_user.logs
+    p current_user
+    @logs = Log.where(:user_id => current_user.id)
+    #@logs = current_user.logs
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @logs }
