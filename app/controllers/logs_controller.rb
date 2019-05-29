@@ -1,6 +1,7 @@
-class LogController < ApplicationController
+class LogsController < ApplicationController
 before_action :authenticate_user!, #:except => [ :show]
-def index
+
+  def index
     @logs = current_user.logs
     respond_to do |format|
       format.html # index.html.erb
