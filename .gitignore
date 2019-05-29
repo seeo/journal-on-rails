@@ -15,6 +15,8 @@
 
 #but not files in here
 !app/view/logs/*
+!app/view/logs/_search-results.js.erb
+!app/view/logs/_results.html.erb
 
 # Ignore uploaded files in development
 /storage/*

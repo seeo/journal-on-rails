@@ -1,16 +1,16 @@
-<h4>Log Updated! Great Job!</h4>
 
-<h5> Entry Title: </h5>
+
+<h4> Entry Title: </h4>
 <p>
   <%= @log.title %> <br/>
 </p>
 
-<h5> Content:</h5>
+<h4> Content:</h4>
 <p>
 	<% if @log.content == nil %>
 		<%= '' %>
 	<% else %>
-		<%= @log.content %>
+		<%= simple_format(@log.content) %>
 	<% end %>
 </p>
 
