@@ -22,7 +22,14 @@ before_action :authenticate_user!, #:except => [ :show]
   end
 
   def new
+    if log_params
+      #If data submitted already by the form we call the create method
+      create
+      return
+    end
+
     @log = Log.new
+    render 'new'  #calling the newly created log explicitly
   end
 
   def edit
@@ -48,6 +55,7 @@ before_action :authenticate_user!, #:except => [ :show]
     p @log
     if @log.save
       redirect_to @log
+      p "Log saved!"
       #ExampleMailer.sample_email(@user).deliver_now
     else
       render 'new'
@@ -84,8 +92,12 @@ before_action :authenticate_user!, #:except => [ :show]
   end
 
   private
-    def log_params
-      params.require(:log).permit(:title, :content, :image) #
-    end
 
-end
+    def log_params
+      if params[:log].nil? || params[:log].empty?
+        return false
+      else
+        return params.require(:log).permit(:title, :content, :image)
+      end
+    end
+  end
