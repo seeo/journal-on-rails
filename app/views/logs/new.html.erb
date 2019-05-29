@@ -3,9 +3,9 @@
 <%= form_with scope: :log, url: logs_path, local: true do |form| %>
   <p>
     <%= form.label :title, "Entry Title*"%><br>
-    <%= form.text_field :title %><br>
+    <%= form.text_field :title, class: "title-text-field" %><br>
 		<%= form.label :content, "Content - How did you feel today?" %><br>
-    <%= form.text_area :content, :cols=>40, :rows=>15 %><br>
+    <%= form.text_area :content, class: "log-text-area" %><br>
 		<%= form.label :picture, "Picture (happy maybe?)*" %><br>
 		<!--<%= cl_image_upload_tag(:picture, :html => { :multiple => false }) %> -->
     <%= form.file_field :picture %>

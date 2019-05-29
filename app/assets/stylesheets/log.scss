@@ -2,11 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.log-text-area{
-	width :100%;
-}
 
 .home-bottom-image {
 		position: absolute;
 		clip: rect(auto, 0px, auto, 0px);
+}
+
+input.body {
+	width: 95%;
+}
+
+.title-text-field{
+	width: 50%;
+}
+
+.log-text-area {
+	width: 50%;
+	min-height: 20em;
 }

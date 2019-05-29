@@ -8,7 +8,7 @@ before_action :authenticate_user!, #:except => [ :show]
         format.js {render partial: 'search-results'}
       end
     else
-      @logs = Log.where(:user_id => current_user.id)
+      @logs = Log.where(:user_id => current_user.id).order('created_at DESC')
       @name = current_user.name
 
       #@logs = current_user.logs
@@ -101,10 +101,25 @@ before_action :authenticate_user!, #:except => [ :show]
       log_params[:image] = @log.image
     end
 
-    if @log.update(log_params)
-      redirect_to @log
-    else
-      render 'logs/edit'
+# respond_to do |format|
+#       if @log.save
+#         #redirect_to @log
+#         format.html { redirect_to @log, notice: "Entry created!" }
+#         p "Log updated!"
+#         #ExampleMailer.sample_email(@user).deliver_now
+#       else
+#         #render 'new'
+#         format.html { render action: 'new' }
+#       end
+#     end
+
+    respond_to do |format|
+      if @log.update(log_params)
+        format.html { redirect_to @log, notice: "Entry updated!" }
+        p "Log updated!"
+      else
+        format.html { render action: 'logs/edit' }
+      end
     end
   end
 

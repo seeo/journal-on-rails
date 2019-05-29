@@ -1,11 +1,11 @@
-<h1>Edit Log</h1>
+<h4>Edit Log</h4>
 
 <%= form_with scope: :log, model: @log, local: true do |form| %>
   <p>
     <%= form.label :title, 'Entry Title' %><br>
-    <%= form.text_field :title %><br>
+    <%= form.text_field :title, class: "title-text-field" %><br>
 		<%= form.label :content, "Content - Great! Felt better?" %><br>
-		<%= form.text_area :content, :cols=>40, :rows=>15 %><br>
+		<%= form.text_area :content, class: "log-text-area"%><br>
 		<%= form.label :picture %><br>
 		<%= cl_image_tag(@log.image, :width => 350, :fetch_format=>:auto, :crop=>"scale") %><br>
     <%= form.file_field :picture %><br>
