@@ -4,10 +4,20 @@
   <hr class="my-4">
   <p>Yes. We mean it.</p>
   <p class="lead">
-    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+    <a
+		class="btn btn-primary btn-lg"
+		href="https://memegenerator.net/instance/45494779/catwoman-wisdom-everything-is-quantified-and-co-related"
+		target="_blank"
+		role="button">
+			Learn more
+		</a>
   </p><br/>
 
 <h4>Agenda Entries</h4>
+	<%= form_tag(logs_path, method: "get") do %>
+		<%= text_field_tag :search, params[:search], placeholder: "Enter entry title" %>
+		<%= submit_tag "Search" %>
+	<% end %>
 	<div class="container">
   	<div class="row">
     	<table class="table table-striped">
@@ -23,26 +33,7 @@
   				<tr>
           	<td class = "log-title"><%= log.title %></td>
           	<td><%= log.created_at.strftime('%d.%m.%Y') %></td>
-						<td> <%= cl_image_tag(log.image, :width => 50, :height => 50)%></td>
-
-						<td>
-						<select>
-							<option>
-								<%= link_to 'Show', log_path(log)%>
-							</option>
-
-							<option>
-								<%= link_to 'Edit', edit_log_path(log)%>
-							</option>
-
-							<option>
-								<%= link_to 'Delete', log_path(log),
-        				method: :delete,
-        				data: { confirm: 'Are you really sure you want to delete this entry??' } %>
-							</option>
-
-						</select>
-						</td>
+						<td> <%= cl_image_tag(log.image, :width => 50, :fetch_format=>:auto, :crop=>"scale")%></td>
 						<td>
     					<%= link_to 'Show', log_path(log)%>
     				</td>
@@ -65,5 +56,5 @@
 	<%= link_to 'Add New Log', new_log_path %>
 <% end %><br/>
 
-<img src = "<%= image_url 'raw-run.jpg' %>"/>
+<!--<img src = "<%= image_url 'bears-guts-raw-run.jpg' %>" class = "home-bottom-image"/> -->
 

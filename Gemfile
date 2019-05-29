@@ -25,6 +25,8 @@ gem 'bootstrap', '~> 4.1.0'
 
 gem 'jquery-rails'
 
+gem 'pg_search'
+
 gem 'jquery-turbolinks'
 
 gem 'cloudinary'

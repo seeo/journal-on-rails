@@ -2,9 +2,6 @@ class LogsController < ApplicationController
 before_action :authenticate_user!, #:except => [ :show]
 
   def index
-    p "************"
-    p current_user
-    p "************"
 
     @logs = Log.where(:user_id => current_user.id)
     @name = current_user.name
