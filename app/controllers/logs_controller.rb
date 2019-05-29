@@ -39,26 +39,41 @@ before_action :authenticate_user!, #:except => [ :show]
   def create
     @log = Log.new(log_params)
     @user = current_user
-    uploaded_file = params[:log][:picture].path
-    p params
-    p uploaded_file
-    cloudinary_file = Cloudinary::Uploader.upload(uploaded_file, :folder => "journal-on-rails")
-    p cloudinary_file
-    p cloudinary_file["public_id"]
-    #store this public_id value to the database
-    @log.attributes = {:image => cloudinary_file["public_id"]}
-    @log.attributes = {:user_id => current_user.id}
 
+    if !params[:log][:picture]
+      #if no image uploaded, upload an empty string
+
+      @log.attributes = {:image => " "}
+      @log.attributes = {:user_id => current_user.id}
+
+    else
+      #else we upload the path of the image from cloudinary
+
+      uploaded_file = params[:log][:picture].path
+      p params
+      p uploaded_file
+      cloudinary_file = Cloudinary::Uploader.upload(uploaded_file, :folder => "journal-on-rails")
+      p cloudinary_file
+      p cloudinary_file["public_id"]
+      #store this public_id value to the database
+      @log.attributes = {:image => cloudinary_file["public_id"]}
+      @log.attributes = {:user_id => current_user.id}
+
+    end
 
     # render json: cloudinary_file
     # @song["public_id"] = cloudinary_file["public_id"]
     p @log
-    if @log.save
-      redirect_to @log
-      p "Log saved!"
-      #ExampleMailer.sample_email(@user).deliver_now
-    else
-      render 'new'
+    respond_to do |format|
+      if @log.save
+        #redirect_to @log
+        format.html { redirect_to @log, notice: "Entry created!" }
+        p "Log saved!"
+        #ExampleMailer.sample_email(@user).deliver_now
+      else
+        #render 'new'
+        format.html { render action: 'new' }
+      end
     end
   end
 
