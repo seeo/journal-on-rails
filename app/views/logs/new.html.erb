@@ -1,0 +1,16 @@
+<h4>Create New Entry</h4>
+
+<%= form_with scope: :log, url: logs_path, local: true do |form| %>
+  <p>
+    <%= form.label :title, "Entry Title*"%><br>
+    <%= form.text_field :title %><br>
+		<%= form.label :content, "Content - How did you feel today?" %><br>
+    <%= form.text_area :content, :cols=>40, :rows=>15 %><br>
+		<%= form.label :picture, "Picture (happy maybe?)*" %><br>
+		<!--<%= cl_image_upload_tag(:picture, :html => { :multiple => false }) %> -->
+    <%= form.file_field :picture %>
+  </p>
+    <%= form.submit "Save Entry" %>
+<% end %> <br/>
+
+<%= link_to 'Back', logs_path, class: 'btn btn-primary' %>

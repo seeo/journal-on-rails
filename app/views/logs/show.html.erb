@@ -1,0 +1,22 @@
+<h4>Log Updated! Great Job!</h4>
+
+<h5> Entry Title: </h5>
+<p>
+  <%= @log.title %> <br/>
+</p>
+
+<h5> Content:</h5>
+<p>
+	<% if @log.content == nil %>
+		<%= '' %>
+	<% else %>
+		<%= @log.content %>
+	<% end %>
+</p>
+
+<%= link_to 'Back', logs_path, class: 'btn btn-primary' %> |
+<%= link_to 'Edit',  edit_log_path, class: 'btn btn-secondary' %> <br/><br/>
+
+<%= cl_image_tag(@log.image, :width => 350, :fetch_format=>:auto, :crop=>"scale") %> <br/>
+
+

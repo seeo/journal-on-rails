@@ -1,0 +1,52 @@
+<div class="jumbotron">
+  <h1 class="display-4">Agenda</h1>
+  <p class="lead">Keep your diary a secret</p>
+  <hr class="my-4">
+  <p>Yes. We mean it.</p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+  </p>
+
+<p>Agenda Entries</p>
+	<div class="container">
+  	<div class="row">
+    	<table class="table table-striped">
+      	<thead>
+        	<tr>
+          	<th scope="col">#</th>
+          	<th scope="col">Title</th>
+          	<th scope="col">Created On</th>
+          	<th scope="col">Thumb Nails</th>
+        	</tr>
+      	</thead>
+      <tbody>
+				<% @logs.each do |log| %>
+  				<tr>
+						<td><%= log.id %></td>
+          	<td class = "log-title"><%= log.title %></td>
+          	<td><%= log.created_at.strftime('%d.%m.%Y') %></td>
+						<td> <%= cl_image_tag(log.image, :width => 50, :height => 50)%></td>
+						<td>
+    					<%= link_to 'Show', log_path(log)%>
+    				</td>
+    				<td>
+    					<%= link_to 'Edit', edit_log_path(log)%>
+    				</td>
+						<td>
+							<%= link_to 'Delete', log_path(log),
+        			method: :delete,
+        			data: { confirm: 'Are you really sure you want to delete this entry??' } %>
+						</td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<% if user_signed_in? %>
+	<%= link_to 'Add New Log', new_log_path %>
+<% end %><br/>
+
+<img src = "<%= image_url 'raw-run.jpg' %>"/>
+
