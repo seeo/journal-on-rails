@@ -15,6 +15,10 @@
 
 <h4>Agenda Entries</h4>
 	<%= form_tag(logs_path, method: "get", remote: true) do %>
+	<!-- if route comes back with JSON, page will not load unless it is html
+	to read what remote true does.
+	but next bit is to do fetch. can do fetch in publicly assessible API endpoints
+	SWAPI, star wards API -->
 		<%= text_field_tag :search, params[:search], placeholder: "Enter entry title" %>
 		<%= submit_tag "Search" %>
 	<% end %> <br/>
