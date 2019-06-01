@@ -27,6 +27,7 @@ before_action :authenticate_user!, #:except => [ :show]
       format.html
       format.json { render json: @log }
     end
+    p ENV['CLOUDINARY_URL']
   end
 
   def new
