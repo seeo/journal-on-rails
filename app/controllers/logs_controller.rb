@@ -59,10 +59,14 @@ before_action :authenticate_user!, #:except => [ :show]
       #else we upload the path of the image from cloudinary
 
       uploaded_file = params[:log][:picture].path
+      p "params here:"
       p params
+      p "uploaded file:"
       p uploaded_file
       cloudinary_file = Cloudinary::Uploader.upload(uploaded_file, :folder => "journal-on-rails")
+      p "cloudinary file:"
       p cloudinary_file
+      p "cloudinary_file public id:"
       p cloudinary_file["public_id"]
       #store this public_id value to the database
       @log.attributes = {:image => cloudinary_file["public_id"]}
