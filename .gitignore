@@ -39,3 +39,6 @@ app-env
 
 # Ignore application configuration
 /config/application.yml
+
+#Ignore the AWS pem file:
+/agenda_journal_on_rails.pem
