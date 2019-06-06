@@ -57,11 +57,11 @@ before_action :authenticate_user!, #:except => [ :show]
 
     else
       #else we upload the path of the image from cloudinary
-      p 'uploaded file here'
+      p 'uploaded file path here below:'
       uploaded_file = params[:log][:picture].path
-      p "params here:"
+      p "params here below:"
       p params
-      p "uploaded file:"
+      p "uploaded file below:"
       p uploaded_file
       cloudinary_file = Cloudinary::Uploader.upload(uploaded_file, :folder => "journal-on-rails")
       p "cloudinary file:"
@@ -98,7 +98,6 @@ before_action :authenticate_user!, #:except => [ :show]
       uploaded_file = params[:log][:picture].path
       p "printing uploaded_file path below: "
       p uploaded_file
-      p "printing cloudinary_file below: "
       cloudinary_file = Cloudinary::Uploader.upload(uploaded_file, :folder => "journal-on-rails")
 
       p "printing cloudinary_file below: "
