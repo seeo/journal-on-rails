@@ -57,7 +57,7 @@ before_action :authenticate_user!, #:except => [ :show]
 
     else
       #else we upload the path of the image from cloudinary
-
+      p 'uploaded file here'
       uploaded_file = params[:log][:picture].path
       p "params here:"
       p params
