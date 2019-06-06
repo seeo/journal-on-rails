@@ -41,7 +41,6 @@
 						<tr>
 							<td class = "log-title"><%= log.title %></td>
 							<td><%= log.created_at.strftime('%d.%m.%Y') %></td>
-							<%= p log.image =%>
 							<td> <%= cl_image_tag(log.image, :width => 50, :fetch_format=>:auto, :crop=>"scale")%></td>
 							<td>
 								<%= link_to 'Show', log_path(log)%>
