@@ -94,15 +94,19 @@ before_action :authenticate_user!, #:except => [ :show]
     @log = Log.find(params[:id])
 
     if params[:log][:picture]
+      p "begin cloudinary upload if there is image: "
       uploaded_file = params[:log][:picture].path
+      p "printing uploaded_file path below: "
       p uploaded_file
-      p "printing uploaded_file path above"
+      p "printing cloudinary_file below: "
       cloudinary_file = Cloudinary::Uploader.upload(uploaded_file, :folder => "journal-on-rails")
 
+      p "printing cloudinary_file below: "
       p cloudinary_file
-      p "printing cloudinary_file above"
+
+      p "printing cloudinary_file url below: "
       p cloudinary_file["url"]
-      p "printing cloudinary_file url above"
+
 
       @log.attributes = {:image => cloudinary_file["public_id"]}
     else
